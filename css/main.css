@@ -1,0 +1,28 @@
+body {
+  background: url("../resources/hotel-wallpaper.png") repeat;
+  background-color: rgba(145, 218, 201, 0.5);
+  background-blend-mode: multiply;
+
+  font-family: 'Raleway', sans-serif;
+
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: rgba(23, 104, 85, 0.8);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+header h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: max(7vw, 100px);
+  margin: 0;
+  padding: 1rem;
+}
+
+header input[type=text] {
+  text-align: center;
+}
