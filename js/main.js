@@ -66,6 +66,12 @@ function addTestRecipes() {
 
 
 function displayRecipes(recipes) {
+  const list = document.getElementById("list");
+
+  while (list.hasChildNodes()) {
+    list.removeChild(list.lastChild);
+  }
+
     // Recipes
     recipes.forEach( (recipe) => {
       // Ingredients
@@ -109,12 +115,127 @@ function filterListWithSearch(search) {
   }
 }
 
+var recipes = [];
 
 window.addEventListener("load", () => {
   const searchForm = document.getElementById("search-form");
   const searchBox = document.getElementById("search-box");
   const outputDiv = document.getElementById("output");
-  const list = document.getElementById("list");
+
+  // TODO: "Add" button should be inactive until the Title has a value
+
+  let ingredient_number = 0;
+  const newIngredientBtn = document.getElementById("new-ingredient");
+  const ingredients = document.getElementById("ingredients-container");
+  newIngredientBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    
+    let newIngredient = document.createElement("div");
+
+    let name = document.createElement("input");
+    name.type = "text";
+    name.id = "name" + ingredient_number;
+    name.name = "name" + ingredient_number;
+    name.classList.add("ingredient-name");
+    let nLabel = document.createElement("lable");
+    nLabel.for = "name" + ingredient_number;
+    nLabel.textContent = "Name";
+
+    let quantity = document.createElement("input");
+    quantity.type = "text";
+    quantity.id = "quantity" + ingredient_number;
+    quantity.name = "quantity" + ingredient_number;
+    quantity.classList.add("ingredient-quantity");
+    let qLabel = document.createElement("lable");
+    qLabel.for = "quantity" + ingredient_number;
+    qLabel.textContent = "Quantity";
+
+    let measure = document.createElement("input");
+    measure.type = "text";
+    measure.id = "measure" + ingredient_number;
+    measure.name = "measure" + ingredient_number;
+    measure.classList.add("ingredient-measure");
+    let mLabel = document.createElement("lable");
+    mLabel.for = "measure" + ingredient_number;
+    mLabel.textContent = "Measure";
+
+    newIngredient.appendChild(nLabel);
+    newIngredient.appendChild(name);
+    newIngredient.appendChild(document.createElement("br"));
+    newIngredient.appendChild(qLabel);
+    newIngredient.appendChild(quantity);
+    newIngredient.appendChild(document.createElement("br"));
+    newIngredient.appendChild(mLabel);
+    newIngredient.appendChild(measure);
+    newIngredient.appendChild(document.createElement("br"));
+    
+    ingredients.appendChild(newIngredient);
+    ingredients.appendChild(document.createElement("br"));
+
+    ingredient_number++;
+    name.focus();
+  });
+
+  let direction_number = 0;
+  const newDirectionBtn = document.getElementById("new-direction");
+  const directions = document.getElementById("directions-container");
+  newDirectionBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    let newDirection = document.createElement("textarea");
+    newDirection.id = "direction" + direction_number;
+
+    directions.appendChild(newDirection);
+    directions.appendChild(document.createElement("br"));
+
+    direction_number++;
+    newDirection.focus();
+  });
+
+
+  const addRecipeBtn = document.getElementById("add-recipe");
+  addRecipeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // TODO: check for empty fields and don't add them
+    //    - I tried making it a form w/ submit action, which allowed required, but didn't save data
+    //    - NOTE: This will probably work, I'm guessing i'm just missing something simple
+    // TODO: Title is required, so is at least one ingredient and one direction
+    //    - It should probably have at least one of each showing by default then
+
+    const newRecipeTitle = document.getElementById("nr-title").value;
+    let newRecipe = new Recipe(newRecipeTitle);
+
+    const ingredientsContainer = document.getElementById("ingredients-container");
+    let ingredientGroups = ingredientsContainer.querySelectorAll("div");
+    ingredientGroups.forEach((i) => {
+      let name = i.querySelector(".ingredient-name").value;
+      let quantity = i.querySelector(".ingredient-quantity").value;
+      let measure = i.querySelector(".ingredient-measure").value;
+      newRecipe.addIngredient(new Ingredient(name, quantity, measure));
+    });
+
+    const directionsContainer = document.getElementById("directions-container");
+    let directionInputs = directionsContainer.querySelectorAll("textarea");
+    directionInputs.forEach((direction) => {
+      newRecipe.addDirection(direction.value);
+    });
+
+    console.log(newRecipe);
+
+    recipes.push(newRecipe);
+    displayRecipes(recipes);
+
+    document.getElementById("new-recipe-form").reset();
+    while (ingredientsContainer.hasChildNodes()) {
+      ingredientsContainer.removeChild(ingredientsContainer.lastChild);
+    }
+    while (directionsContainer.hasChildNodes()) {
+      directionsContainer.removeChild(directionsContainer.lastChild);
+    }
+
+  });
+
 
   // register doSearch to submit event
   searchForm.addEventListener("submit", (e) => {
@@ -133,6 +254,6 @@ window.addEventListener("load", () => {
     filterListWithSearch(searchBox.value);
   });
 
-  let recipes = addTestRecipes();
-  displayRecipes(recipes);
+  //recipes = addTestRecipes();
+  //displayRecipes(recipes);
 });

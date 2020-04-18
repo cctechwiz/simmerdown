@@ -25,7 +25,27 @@
 
   <main>
     <div id="output"></div>
+
     <ol id="list"></ol>
+
+    <div id="new-recipe">
+      <form id="new-recipe-form">
+        <label for="nr-title">Title</label>
+        <input type=text id="nr-title">
+
+        <div>Ingredients:
+          <div id="ingredients-container"></div>
+          <button id="new-ingredient">+</button>
+        </div>
+
+        <div>Directions:
+          <div id="directions-container"></div>
+          <button id="new-direction">+</button>
+        </div>
+
+        <button id="add-recipe">Add</button>
+      </form>
+    </div>
   </main>
 
   <footer></footer>
