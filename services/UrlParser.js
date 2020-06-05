@@ -6,14 +6,14 @@ const UrlParser = {
     let request = {
       resource  : r[1],
       id        : r[2],
-      verb      : r[3]
+      //verb      : r[3]
     };
 
     return request;
   },
 
   getRoutableUrl : (request) => {
-    let url = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '');
+    let url = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '');// + (request.verb ? '/' + request.verb : '');
     return url;
   }
 };
