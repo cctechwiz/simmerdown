@@ -1,55 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 
-  <title>Simply Cooking</title>
+  <title>Recipes</title>
 
-  <meta name="description" content="Simple yet elegant recipes" />
-  <meta name="author" content="Josh Maxwell aka cctechwiz" />
-
-  <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway&display=swap" rel="stylesheet">   
-  
-  <link rel="stylesheet" href="css/main.css" />
+  <script type="module" src="/app.js"></script>
 </head>
 
+
 <body>
-  <header>
-    <h1>Simply Cooking</h1>
-    <form id="search-form">
-      <input type=text placeholder="Search" id="search-box">
-      <input  class="form-button" type="submit" value="⌕">
-    </form>
-  </header>
+  <div id="header_container"></div>
 
-  <main>
-    <div id="output"></div>
+  <div id="page_container">
+    <article> Loading ... </article>
+  </div>
 
-    <ol id="list"></ol>
-
-    <div id="new-recipe">
-      <form id="new-recipe-form">
-        <label for="nr-title">Title</label>
-        <input type=text id="nr-title">
-
-        <div>Ingredients:
-          <div id="ingredients-container"></div>
-          <button id="new-ingredient">+</button>
-        </div>
-
-        <div>Directions:
-          <div id="directions-container"></div>
-          <button id="new-direction">+</button>
-        </div>
-
-        <button id="add-recipe">Add</button>
-      </form>
-    </div>
-  </main>
-
-  <footer></footer>
-  <script src="js/main.js"></script>
+  <div id="footer_container"></div>
 </body>
+
 
 </html>

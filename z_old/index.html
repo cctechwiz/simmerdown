@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Simply Cooking</title>
+
+  <meta name="description" content="Simple yet elegant recipes" />
+  <meta name="author" content="Josh Maxwell aka cctechwiz" />
+
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Raleway&display=swap" rel="stylesheet">   
+  
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Simply Cooking</h1>
+    <form id="search-form">
+      <input type=text placeholder="Search" id="search-box">
+      <input  class="form-button" type="submit" value="⌕">
+    </form>
+  </header>
+
+  <main>
+    <div id="output"></div>
+
+    <ol id="list"></ol>
+
+    <div id="new-recipe">
+      <form id="new-recipe-form">
+        <label for="nr-title">Title</label>
+        <input type=text id="nr-title">
+
+        <div>Ingredients:
+          <div id="ingredients-container"></div>
+          <button id="new-ingredient">+</button>
+        </div>
+
+        <div>Directions:
+          <div id="directions-container"></div>
+          <button id="new-direction">+</button>
+        </div>
+
+        <button id="add-recipe">Add</button>
+      </form>
+    </div>
+  </main>
+
+  <footer></footer>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
