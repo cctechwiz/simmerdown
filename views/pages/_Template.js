@@ -1,7 +1,8 @@
 let VIEWNAME = {
   render : async () => {
     console.log("VIEWNAME render");
-    let view = `
+    // This *html* is a pragma for the extension "ES6 String HTML" to get highlighting
+    let view = /*html*/`
       <section>
         <h1>VIEWNAME</h1>
       </section>

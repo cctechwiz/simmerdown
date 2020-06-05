@@ -1,7 +1,7 @@
 let ListRecipes = {
   render : async () => {
     console.log("ListRecipes render");
-    let view = `
+    let view = /*html*/`
       <section>
         <h1>List Recipes</h1>
       </section>

@@ -9,7 +9,7 @@ import Error404 from './views/pages/Error404.js'
 
 import UrlParser from './services/UrlParser.js'
 
-//Note: The URL must start with /#/
+//Note: The URL must start with /#/ (aka Fragment Identifier)
 const routes = {
     '/'         : ListRecipes
   , '/new'      : NewRecipe

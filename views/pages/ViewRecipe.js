@@ -5,7 +5,7 @@ let ViewRecipe = {
     let request = UrlParser.getRequest()
 
     console.log("ViewRecipe render");
-    let view = `
+    let view = /*html*/`
       <section>
         <h1>ViewRecipe ${request.id}</h1>
       </section>

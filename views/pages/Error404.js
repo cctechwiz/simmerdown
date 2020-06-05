@@ -1,7 +1,7 @@
 let Error404 = {
   render : async () => {
     console.log("Error404 render");
-    let view = `
+    let view = /*html*/`
       <section>
         <h1>Error404</h1>
       </section>

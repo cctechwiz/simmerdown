@@ -5,7 +5,7 @@ let EditRecipe = {
     let request = UrlParser.getRequest()
 
     console.log("EditRecipe render");
-    let view = `
+    let view = /*html*/`
       <section>
         <h1>EditRecipe ${request.id}</h1>
       </section>
