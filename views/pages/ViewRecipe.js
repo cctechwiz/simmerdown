@@ -12,8 +12,10 @@ let ViewRecipe = {
     `
     return view;
   }
-  , after_render : async () => {
+  , after_render : async (Repository) => {
     console.log("ViewRecipe after_render");
+    let recipes = Repository.getAllRecipes();
+    console.log(recipes);
   }
 
 };
