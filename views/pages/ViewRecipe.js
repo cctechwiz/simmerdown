@@ -14,8 +14,14 @@ let ViewRecipe = {
   }
   , after_render : async (Repository) => {
     console.log("ViewRecipe after_render");
-    let recipes = Repository.getAllRecipes();
+
+    let request = UrlParser.getRequest();
+
+    let recipes = await Repository.getAllRecipes();
     console.log(recipes);
+
+    let recipe = await Repository.getRecipe(request.id);
+    console.log(recipe);
   }
 
 };

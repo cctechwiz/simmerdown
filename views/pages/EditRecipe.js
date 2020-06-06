@@ -14,6 +14,14 @@ let EditRecipe = {
   }
   , after_render : async () => {
     console.log("EditRecipe after_render");
+    
+    let request = UrlParser.getRequest();
+
+    let recipes = await Repository.getAllRecipes();
+    console.log(recipes);
+
+    let recipe = await Repository.getRecipe(request.id);
+    console.log(recipe);
   }
 
 };

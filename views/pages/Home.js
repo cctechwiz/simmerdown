@@ -1,17 +1,15 @@
 let ListRecipes = {
   render : async () => {
-    console.log("ListRecipes render");
+    console.log("Home render");
     let view = /*html*/`
       <section>
-        <h1>List Recipes</h1>
+        <h1>Home</h1>
       </section>
     `
     return view;
   }
   , after_render : async (Repository) => {
-    console.log("ListRecipes after_render");
-    let recipes = Repository.getAllRecipes();
-    console.log(recipes);
+    console.log("Home after_render");
   }
 
 };

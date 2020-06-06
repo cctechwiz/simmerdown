@@ -1,6 +1,6 @@
 'use strict';
 
-import ListRecipes from './views/pages/ListRecipes.js'
+import Home from './views/pages/Home.js'
 import NewRecipe from './views/pages/NewRecipe.js'
 import Viewrecipe from './views/pages/ViewRecipe.js'
 import EditRecipe from './views/pages/EditRecipe.js'
@@ -12,7 +12,7 @@ import UrlParser from './services/UrlParser.js'
 
 //Note: The URL must start with /#/ (aka Fragment Identifier)
 const routes = {
-    '/'         : ListRecipes
+    '/'         : Home
   , '/new'      : NewRecipe
   , '/view/:id' : Viewrecipe
   , '/edit/:id' : EditRecipe
