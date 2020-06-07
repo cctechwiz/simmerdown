@@ -1,3 +1,4 @@
+import Repository from '../../services/Repository.js'
 import UrlParser from '../../services/UrlParser.js'
 
 //TODO: Consider moving into ../../services/HtmlBuilder or something
@@ -29,8 +30,9 @@ let ViewRecipe = {
     `
     return view;
   }
-  , after_render : async (Repository) => {
+  , after_render : async () => {
     console.log("ViewRecipe after_render");
+    console.log(await Repository.getAllRecipes());
 
     let request = UrlParser.getRequest();
     let recipe = await Repository.getRecipe(request.id);

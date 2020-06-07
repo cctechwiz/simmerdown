@@ -1,3 +1,5 @@
+import Repository from '../../services/Repository.js'
+
 let ListRecipes = {
   render : async () => {
     console.log("Home render");
@@ -8,8 +10,9 @@ let ListRecipes = {
     `
     return view;
   }
-  , after_render : async (Repository) => {
+  , after_render : async () => {
     console.log("Home after_render");
+    console.log(await Repository.getAllRecipes());
   }
 
 };

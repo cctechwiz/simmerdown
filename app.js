@@ -7,7 +7,6 @@ import EditRecipe from './views/pages/EditRecipe.js'
 
 import Error404 from './views/pages/Error404.js'
 
-import Repository from '../../services/Repository.js'
 import UrlParser from './services/UrlParser.js'
 
 //Note: The URL must start with /#/ (aka Fragment Identifier)
@@ -30,7 +29,7 @@ const router = async () => {
   let page = routes[parsedUrl] ? routes[parsedUrl] : Error404;
 
   content.innerHTML = await page.render();
-  await page.after_render(Repository); //TODO: Does this behave like I want it to?
+  await page.after_render();
 };
 
 window.addEventListener('hashchange', router);
