@@ -8,11 +8,13 @@ let NewRecipes = {
         <h1>New Recipe</h1>
 
         <div id="new-title">
-          <label for="title">Title</label>
+          <h1>Title:</h1>
           <input type="text" id="txt-title" name="title" required>
         </div>
 
-        <div id="new-categories"></div>
+        <div id="new-categories">
+          <h1>Categories:</h1>
+        </div>
 
         <h1>Ingredients:</h1>
         <div id="new-ingredients"></div>
