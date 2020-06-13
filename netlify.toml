@@ -2,4 +2,5 @@
 ID = "pensive-hamilton-631582"
 
 [build]
+command = "#"
 functions = "functions"
