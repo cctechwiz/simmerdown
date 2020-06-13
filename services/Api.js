@@ -1,6 +1,6 @@
 const Api = {
   test : async () => {
-    const url = '/.netlify/functions/protected-function-test';
+    const url = '/.netlify/functions/protected-function';
     const user = netlifyIdentity.currentUser();
     let user_header = {}
     if (user) {
