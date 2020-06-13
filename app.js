@@ -7,6 +7,7 @@ import EditRecipe from './views/pages/EditRecipe.js'
 
 import Error404 from './views/pages/Error404.js'
 
+import Api from './services/Api.js'
 import UrlParser from './services/UrlParser.js'
 
 //Note: The URL must start with /#/ (aka Fragment Identifier)
@@ -27,6 +28,9 @@ const router = async () => {
     netlifyIdentity.open();
   }
   */
+
+  const data = await Api.test();
+  console.log(data);
 
   const content = null || document.getElementById('page_container');
 
