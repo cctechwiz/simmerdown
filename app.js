@@ -20,9 +20,13 @@ const routes = {
 const router = async () => {
   console.log('Hello, from app.js router!');
 
-  //netlifyIdentity.open();
-  //const user = netlifyIdentity.currentUser();
-  //console.log(user);
+  /*
+  const user = netlifyIdentity.currentUser();
+  console.log(user);
+  if(user == null) {
+    netlifyIdentity.open();
+  }
+  */
 
   const content = null || document.getElementById('page_container');
 
