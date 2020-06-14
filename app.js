@@ -7,6 +7,8 @@ import EditRecipe from './views/pages/EditRecipe.js'
 
 import Error404 from './views/pages/Error404.js'
 
+import Header from './views/components/Header.js'
+
 import Api from './services/Api.js'
 import UrlParser from './services/UrlParser.js'
 
@@ -32,7 +34,14 @@ const router = async () => {
   const data = await Api.test();
   console.log(data);
 
+  const header = null || document.getElementById('header_container');
   const content = null || document.getElementById('page_container');
+
+  //TODO: This probably isn't needed since the header won't change
+  //const headerContent = document.createElement('div');
+  //headerContent.innerHTML = await Header.render();
+  //header.appendChild(headerContent);
+  //Header.after_render();
 
   let request = UrlParser.getRequest();
   console.log(request);
