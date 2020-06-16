@@ -1,3 +1,4 @@
+import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 
 let ListRecipes = {
@@ -24,9 +25,7 @@ let ListRecipes = {
     console.log(allCategories);
     let categoriesSection = document.getElementById("home-categories")
     allCategories.forEach(category => {
-      let div = document.createElement("div");
-      div.innerHTML = category;
-      categoriesSection.appendChild(div);
+      HtmlBuilder.addChild(categoriesSection, "div", category);
     });
 
     let allRecipes = await Repository.getAllRecipes();
@@ -34,11 +33,11 @@ let ListRecipes = {
     console.log(allRecipes);
     let recipesSection = document.getElementById("home-recipes")
     for(var recipeId in allRecipes) {
-      let div = document.createElement("div");
-      div.innerHTML = allRecipes[recipeId].title;
-      recipesSection.appendChild(div);
+      //TODO: Turn this into a card instead of a link and br
+      let link = HtmlBuilder.addChild(recipesSection, "a", allRecipes[recipeId].title);
+      link.href = `/#/view/${recipeId}`;
+      HtmlBuilder.addChild(recipesSection, "br", "");
     };
-
   }
 
 };

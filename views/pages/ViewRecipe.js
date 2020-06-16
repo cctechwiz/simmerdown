@@ -1,12 +1,6 @@
+import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 import UrlParser from '../../services/UrlParser.js'
-
-//TODO: Consider moving into ../../services/HtmlBuilder or something
-function addChild(parent, type, content) {
-  let child = document.createElement(type);
-  child.innerText = content;
-  parent.appendChild(child);
-}
 
 let ViewRecipe = {
   render : async () => {
@@ -43,17 +37,17 @@ let ViewRecipe = {
 
     let categories = document.getElementById("view-categories");
     recipe.categories.forEach(categoryDescription => {
-      addChild(categories, "div", categoryDescription);
+      HtmlBuilder.addChild(categories, "div", categoryDescription);
     });
 
     let ingredients = document.getElementById("view-ingredients");
     recipe.ingredients.forEach(ingredientDescription => {
-      addChild(ingredients, "div", ingredientDescription);
+      HtmlBuilder.addChild(ingredients, "div", ingredientDescription);
     });
 
     let directions = document.getElementById("view-directions");
     recipe.directions.forEach(directionDescription => {
-      addChild(directions, "div", directionDescription);
+      HtmlBuilder.addChild(directions, "div", directionDescription);
     });
   }
 
