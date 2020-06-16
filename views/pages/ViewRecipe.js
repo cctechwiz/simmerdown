@@ -11,7 +11,7 @@ let ViewRecipe = {
       <section>
         <h1>ViewRecipe ${request.id}</h1>
 
-        <h1 id="view-name"></h1>
+        <h1 id="view-title"></h1>
 
         <div id="view-categories"></div>
 
@@ -32,8 +32,8 @@ let ViewRecipe = {
     let recipe = await Repository.getRecipe(request.id);
     console.log(recipe);
 
-    let title = document.getElementById("view-name");
-    title.innerText = recipe.name;
+    let title = document.getElementById("view-title");
+    title.innerText = recipe.title;
 
     let categories = document.getElementById("view-categories");
     recipe.categories.forEach(categoryDescription => {
