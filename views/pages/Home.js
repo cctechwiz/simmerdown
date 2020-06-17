@@ -8,6 +8,8 @@ let ListRecipes = {
       <section>
         <h1>Home</h1>
 
+        <button id="home-new-recipe-btn">New Recipe</button>
+
         <h1>Categories</h1>
         <div id="home-categories"></div>
 
@@ -20,10 +22,13 @@ let ListRecipes = {
   , after_render : async () => {
     console.log("Home after_render");
 
+    let newRecipeBtn = document.getElementById("home-new-recipe-btn");
+    newRecipeBtn.addEventListener("click", () => { window.location = "/#/new" });
+
     let allCategories = Repository.getAllCategories();
     console.log(allCategories === Repository.categories);
     console.log(allCategories);
-    let categoriesSection = document.getElementById("home-categories")
+    let categoriesSection = document.getElementById("home-categories");
     allCategories.forEach(category => {
       HtmlBuilder.addChild(categoriesSection, "div", category);
     });
@@ -36,7 +41,7 @@ let ListRecipes = {
       //TODO: Turn this into a card instead of a link and br
       let link = HtmlBuilder.addChild(recipesSection, "a", allRecipes[recipeId].title);
       link.href = `/#/view/${recipeId}`;
-      HtmlBuilder.addChild(recipesSection, "br", "");
+      HtmlBuilder.addChild(recipesSection, "br");
     };
   }
 
