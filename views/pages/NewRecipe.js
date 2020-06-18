@@ -1,6 +1,8 @@
 import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 
+import Recipe from '../../models/Recipe.js'
+
 let NewRecipes = {
   render : async () => {
     console.log("NewRecipes render");
@@ -10,7 +12,7 @@ let NewRecipes = {
 
         <h1>Title:</h1>
         <div id="new-title">
-          <input type="text" id="txt-title" name="title" required>
+          <input type="text" name="title" required>
         </div>
 
         <h1>Categories:</h1>
@@ -46,6 +48,8 @@ let NewRecipes = {
 
     document.getElementById("new-discard-btn")
       .addEventListener("click", (clickEvent) => { discardRecipe(); });
+
+    document.querySelector("input[name='title']").focus();
   }
 };
 
@@ -124,14 +128,74 @@ function discardRecipe() {
 function saveRecipe() {
   console.log("Saving recipe...");
   //TODO: 
-  // - Gather all the information from this window
-  // - Create Recipe object
+  // X- Gather all the information from this window
+  // X- Create Recipe object
+  
   // - Call Repository.saveRecipe(newRecipe)
   //  - Save to DB and cache locally
   //  - Return newRecipe.id
+
   // - Ask if user wants to add another recipe
   //  - yes: Reload this page
   //  - no: Redirect to view/id page for newly saved recipe
+
+  let titleElem = document.querySelector("input[name='title']");
+  if (titleElem.value == "") {
+    //alert("Missing title");
+    titleElem.focus();
+    return;
+  }
+
+  let newRecipe = new Recipe(titleElem.value);
+
+  let categoryElems = document.querySelectorAll("#new-categories input[type='checkbox']");
+  categoryElems.forEach((checkbox) => {
+    if (checkbox.checked) {
+      newRecipe.addCategory(checkbox.name);
+    }
+  });
+  //TODO: Does Jess care about this validation/warning?
+  if (!newRecipe.categories.length) {
+    if(!window.confirm("No category selected, Save anyway?")) {
+      return;
+    }
+  }
+
+  let ingredientElems = document.querySelectorAll("#new-ingredients input[type='text']");
+  ingredientElems.forEach((ingredient) => {
+    newRecipe.addIngredient(ingredient.value);
+  });
+  //TODO: Does Jess care about this validation/warning?
+  if (!newRecipe.ingredients.length) {
+    if(!window.confirm("No ingredients added, Save anyway?")) {
+      return;
+    }
+  }
+
+  let directionElems = document.querySelectorAll("#new-directions input[type='text']");
+  directionElems.forEach((direction) => {
+    newRecipe.addDirection(direction.value);
+  });
+  //TODO: Does Jess care about this validation/warning?
+  if (!newRecipe.directions.length) {
+    if(!window.confirm("No directions added, Save anyway?")) {
+      return;
+    }
+  }
+
+  console.log(newRecipe);
+
+  /*
+  //TODO: Make function
+  if(window.confirm("Create another new recipe?")) {
+    //TODO: This doesn't give me a new page, do something else
+    window.location = "/#/new";
+  } else {
+    //TODO: Id has to be updated by repository first or this won't redirect correctly
+    //window.location = `/#/view/${newRecipe.id}`;
+    window.location = "/#/";
+  }
+  */
 }
 
 export default NewRecipes;

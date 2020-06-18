@@ -40,6 +40,10 @@ class Repository {
     console.log("Hello from Repository getRecipe for id: " + id);
     return this.recipes[id];
   }
+
+  async saveRecipe(newRecipe) {
+    //TODO
+  }
 };
 
 //Modern JS Singleton Pattern
