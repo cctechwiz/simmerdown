@@ -23,25 +23,10 @@ const routes = {
 const router = async () => {
   console.log('Hello, from app.js router!');
 
-  /*
-  const user = netlifyIdentity.currentUser();
-  console.log(user);
-  if(user == null) {
-    netlifyIdentity.open();
-  }
-  */
-
   const data = await Api.test();
   console.log(data);
 
-  const header = null || document.getElementById('header_container');
   const content = null || document.getElementById('page_container');
-
-  //TODO: This probably isn't needed since the header won't change
-  //const headerContent = document.createElement('div');
-  //headerContent.innerHTML = await Header.render();
-  //header.appendChild(headerContent);
-  //Header.after_render();
 
   let request = UrlParser.getRequest();
   console.log(request);
