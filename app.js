@@ -1,5 +1,3 @@
-'use strict';
-
 import Home from './views/pages/Home.js'
 import NewRecipe from './views/pages/NewRecipe.js'
 import Viewrecipe from './views/pages/ViewRecipe.js'

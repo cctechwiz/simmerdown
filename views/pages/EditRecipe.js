@@ -1,5 +1,3 @@
-'use strict';
-
 import UrlParser from '../../services/UrlParser.js'
 
 let EditRecipe = {

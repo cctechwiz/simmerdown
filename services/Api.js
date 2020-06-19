@@ -1,5 +1,3 @@
-'use strict';
-
 const Api = {
   test : async () => {
     const url = '/.netlify/functions/protected-function';

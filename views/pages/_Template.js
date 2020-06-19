@@ -1,5 +1,3 @@
-'use strict';
-
 let VIEWNAME = {
   render : async () => {
     console.log("VIEWNAME render");

@@ -1,14 +1,10 @@
-'use strict';
-
 class Recipe {
-  id = -1;
-  title = ""
-  categories = []
-  ingredients = []
-  directions = []
-
   constructor(title) {
+    this.id = -1;
     this.title = title;
+    this.categories = [];
+    this.ingredients = [];
+    this.directions = [];
   }
 
   addCategory(category) {

@@ -1,5 +1,3 @@
-'use strict';
-
 const categories = [
   "breakfast",
   "lunch",
