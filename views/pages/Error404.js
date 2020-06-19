@@ -1,3 +1,5 @@
+'use strict';
+
 let Error404 = {
   render : async () => {
     console.log("Error404 render");

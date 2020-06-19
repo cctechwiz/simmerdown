@@ -1,3 +1,5 @@
+'use strict';
+
 class Recipe {
   id = -1;
   title = ""

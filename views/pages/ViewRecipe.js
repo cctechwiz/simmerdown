@@ -1,3 +1,5 @@
+'use strict';
+
 import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 import UrlParser from '../../services/UrlParser.js'

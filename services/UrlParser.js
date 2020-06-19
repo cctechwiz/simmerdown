@@ -1,3 +1,5 @@
+'use strict';
+
 const UrlParser = {
   getRequest : () => {
     let url = location.hash.slice(1).toLowerCase() || '/';

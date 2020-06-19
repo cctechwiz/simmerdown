@@ -1,3 +1,5 @@
+'use strict';
+
 const HtmlBuilder = {
   addChild : (parent, type, content="") => {
     let child = document.createElement(type);
