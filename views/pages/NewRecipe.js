@@ -43,10 +43,10 @@ let NewRecipes = {
 
     setupDirections();
 
-    document.getElementById("new-save-btn")
+    document.querySelector("#new-save-btn")
       .addEventListener("click", async () => { await saveRecipe(); });
 
-    document.getElementById("new-discard-btn")
+    document.querySelector("#new-discard-btn")
       .addEventListener("click", () => { discardRecipe(); });
 
     document.querySelector("input[name='title']").focus();
@@ -63,7 +63,6 @@ function setupCategories() {
 
     let checkbox = HtmlBuilder.addChild(checkboxDiv, "input");
     checkbox.type = "checkbox";
-    checkbox.id = "chk-" + category;
     checkbox.name = category;
 
     let label = HtmlBuilder.addChild(checkboxDiv, "lable");

@@ -20,6 +20,9 @@ let ViewRecipe = {
 
         <h1>Directions:</h1>
         <div id="view-directions"></div>
+
+        <br>
+        <button id="view-edit-recipe-btn">Edit Recipe</button>
       </section>
     `
     return view;
@@ -48,6 +51,11 @@ let ViewRecipe = {
     let directions = document.getElementById("view-directions");
     recipe.directions.forEach(directionDescription => {
       HtmlBuilder.addChild(directions, "div", directionDescription);
+    });
+
+    let editRecipeBtn = document.querySelector("#view-edit-recipe-btn");
+    editRecipeBtn.addEventListener("click", () => {
+      window.location = `/#/edit/${request.id}`;
     });
   }
 

@@ -45,6 +45,12 @@ class Repository {
     this.recipes[nextId] = newRecipe;
     return nextId;
   }
+
+  async updateRecipe(updatedRecipe) {
+    console.log("Repository::updateRecipe " + JSON.stringify(updatedRecipe));
+    this.recipes[updatedRecipe.id] = updatedRecipe;
+    return updatedRecipe.id;
+  }
 };
 
 function getNextId(recipes) {
