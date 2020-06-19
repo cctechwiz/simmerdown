@@ -12,7 +12,7 @@ let NewRecipes = {
 
         <h1>Title:</h1>
         <div id="new-title">
-          <input type="text" name="title" required>
+          <input type="text" name="title">
         </div>
 
         <h1>Categories:</h1>
@@ -44,7 +44,7 @@ let NewRecipes = {
     setupDirections();
 
     document.getElementById("new-save-btn")
-      .addEventListener("click", (clickEvent) => { saveRecipe(); });
+      .addEventListener("click", async (clickEvent) => { await saveRecipe(); });
 
     document.getElementById("new-discard-btn")
       .addEventListener("click", (clickEvent) => { discardRecipe(); });
@@ -125,7 +125,7 @@ function discardRecipe() {
   }
 }
 
-function saveRecipe() {
+async function saveRecipe() {
   console.log("Saving recipe...");
   //TODO: 
   // X- Gather all the information from this window
@@ -141,7 +141,6 @@ function saveRecipe() {
 
   let titleElem = document.querySelector("input[name='title']");
   if (titleElem.value == "") {
-    //alert("Missing title");
     titleElem.focus();
     return;
   }
@@ -154,48 +153,45 @@ function saveRecipe() {
       newRecipe.addCategory(checkbox.name);
     }
   });
-  //TODO: Does Jess care about this validation/warning?
-  if (!newRecipe.categories.length) {
-    if(!window.confirm("No category selected, Save anyway?")) {
-      return;
-    }
-  }
 
   let ingredientElems = document.querySelectorAll("#new-ingredients input[type='text']");
   ingredientElems.forEach((ingredient) => {
-    newRecipe.addIngredient(ingredient.value);
-  });
-  //TODO: Does Jess care about this validation/warning?
-  if (!newRecipe.ingredients.length) {
-    if(!window.confirm("No ingredients added, Save anyway?")) {
-      return;
+    if (ingredient.value !== "") {
+      newRecipe.addIngredient(ingredient.value);
     }
-  }
+  });
 
   let directionElems = document.querySelectorAll("#new-directions input[type='text']");
   directionElems.forEach((direction) => {
-    newRecipe.addDirection(direction.value);
-  });
-  //TODO: Does Jess care about this validation/warning?
-  if (!newRecipe.directions.length) {
-    if(!window.confirm("No directions added, Save anyway?")) {
-      return;
+    if (direction.value !== "") {
+      newRecipe.addDirection(direction.value);
     }
-  }
+  });
 
   console.log(newRecipe);
+  var recipeId = await Repository.saveRecipe(newRecipe);
+  console.log("Saved new recipe with id: " + recipeId);
 
-  /*
-  //TODO: Make function
   if(window.confirm("Create another new recipe?")) {
-    //TODO: This doesn't give me a new page, do something else
-    window.location = "/#/new";
+    resetPage();
   } else {
-    //TODO: Id has to be updated by repository first or this won't redirect correctly
-    //window.location = `/#/view/${newRecipe.id}`;
-    window.location = "/#/";
+    window.location = `/#/view/${recipeId}`;
   }
-  */
+}
+
+function resetPage() {
+  var title = document.querySelector("input[name='title']");
+  title.value = "";
+  title.focus();
+  
+  let categoryElems = document.querySelectorAll("#new-categories input[type='checkbox']");
+  categoryElems.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  document.querySelector("#new-ingredients").innerHTML = "";
+
+  document.querySelector("#new-directions").innerHTML = "";
 }
 
 export default NewRecipes;
