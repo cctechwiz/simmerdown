@@ -8,8 +8,9 @@ let VIEWNAME = {
       </section>
     `
     return view;
-  }
-  , after_render : async () => {
+  },
+  
+  after_render : async () => {
     console.log("VIEWNAME after_render");
   }
 

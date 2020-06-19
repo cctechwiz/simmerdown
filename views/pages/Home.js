@@ -18,23 +18,21 @@ let ListRecipes = {
       </section>
     `
     return view;
-  }
-  , after_render : async () => {
+  },
+  
+  after_render : async () => {
     console.log("Home after_render");
 
     let newRecipeBtn = document.getElementById("home-new-recipe-btn");
     newRecipeBtn.addEventListener("click", () => { window.location = "/#/new" });
 
     let allCategories = Repository.getAllCategories();
-    console.log(allCategories === Repository.categories);
-    console.log(allCategories);
     let categoriesSection = document.getElementById("home-categories");
     allCategories.forEach(category => {
       HtmlBuilder.addChild(categoriesSection, "div", category);
     });
 
     let allRecipes = await Repository.getAllRecipes();
-    console.log(allRecipes === Repository.recipes);
     console.log(allRecipes);
     let recipesSection = document.getElementById("home-recipes")
     for(var recipeId in allRecipes) {

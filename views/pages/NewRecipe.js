@@ -32,9 +32,9 @@ let NewRecipes = {
       </section>
     `
     return view;
-  }
+  },
 
-  , after_render : async () => {
+  after_render : async () => {
     console.log("NewRecipes after_render");
 
     setupCategories();
@@ -44,10 +44,10 @@ let NewRecipes = {
     setupDirections();
 
     document.getElementById("new-save-btn")
-      .addEventListener("click", async (clickEvent) => { await saveRecipe(); });
+      .addEventListener("click", async () => { await saveRecipe(); });
 
     document.getElementById("new-discard-btn")
-      .addEventListener("click", (clickEvent) => { discardRecipe(); });
+      .addEventListener("click", () => { discardRecipe(); });
 
     document.querySelector("input[name='title']").focus();
   }
@@ -55,7 +55,6 @@ let NewRecipes = {
 
 function setupCategories() {
   let categoryOptions = Repository.getAllCategories();
-  console.log(categoryOptions);
   
   let categories = document.getElementById("new-categories");
 
@@ -78,15 +77,13 @@ function setupIngredients() {
   let ingredients = document.getElementById("new-ingredients");
 
   ingredientsBtn.addEventListener("click", (clickEvent) => {
-    console.log("new-ingredients-btn clicked");
     let ingredientDiv = HtmlBuilder.addChild(ingredients, "div");
     ingredientDiv.classList.add("new-ingredient-container");
     let ingredient = HtmlBuilder.addChild(ingredientDiv, "input");
     ingredient.type = "text";
 
     let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button", "x");
-    removeIngredient.addEventListener("click", (e) => {
-      console.log("remove clicked");
+    removeIngredient.addEventListener("click", () => {
       ingredients.removeChild(ingredientDiv);
     });
 
@@ -98,16 +95,14 @@ function setupDirections() {
   let directionsBtn = document.getElementById("new-directions-btn");
   let directions = document.getElementById("new-directions");
 
-  directionsBtn.addEventListener("click", (clickEvent) => {
-    console.log("new-directions-btn clicked");
+  directionsBtn.addEventListener("click", () => {
     let directionDiv = HtmlBuilder.addChild(directions, "div");
     directionDiv.classList.add("new-direction-container");
     let direction = HtmlBuilder.addChild(directionDiv, "input");
     direction.type = "text";
 
     let removedirection = HtmlBuilder.addChild(directionDiv, "button", "x");
-    removedirection.addEventListener("click", (e) => {
-      console.log("remove clicked");
+    removedirection.addEventListener("click", () => {
       directions.removeChild(directionDiv);
     });
 
@@ -116,29 +111,14 @@ function setupDirections() {
 }
 
 function discardRecipe() {
-  let discard = window.confirm("Discard new recipe?");
-  if (discard) {
-    console.log("Discarding recipe, goodbye!");
+  if (window.confirm("Discard new recipe?")) {
     window.location = "/#/";
-  } else {
-    console.log("Whew, close call!");
   }
 }
 
 async function saveRecipe() {
   console.log("Saving recipe...");
-  //TODO: 
-  // X- Gather all the information from this window
-  // X- Create Recipe object
-  
-  // - Call Repository.saveRecipe(newRecipe)
-  //  - Save to DB and cache locally
-  //  - Return newRecipe.id
-
-  // - Ask if user wants to add another recipe
-  //  - yes: Reload this page
-  //  - no: Redirect to view/id page for newly saved recipe
-
+ 
   let titleElem = document.querySelector("input[name='title']");
   if (titleElem.value == "") {
     titleElem.focus();

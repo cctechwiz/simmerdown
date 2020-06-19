@@ -7,8 +7,9 @@ let Error404 = {
       </section>
     `
     return view;
-  }
-  , after_render : async () => {
+  },
+  
+  after_render : async () => {
     console.log("Error404 after_render");
   }
 

@@ -5,8 +5,9 @@ let Header = {
         <div>header</div>
       `
       return view;
-    }
-    , after_render : async () => {
+    },
+    
+    after_render : async () => {
       console.log("Header after_render");
     }
   

@@ -23,10 +23,10 @@ let ViewRecipe = {
       </section>
     `
     return view;
-  }
-  , after_render : async () => {
+  },
+  
+  after_render : async () => {
     console.log("ViewRecipe after_render");
-    console.log(await Repository.getAllRecipes());
 
     let request = UrlParser.getRequest();
     let recipe = await Repository.getRecipe(request.id);

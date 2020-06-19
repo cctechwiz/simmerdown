@@ -20,27 +20,27 @@ class Repository {
   }
 
   getAllCategories() {
-    console.log("getAllCategories");
+    console.log("Repository::getAllCategories");
     return Array.from(categories);
   }
 
   isValidCategory(category) {
-    console.log("isValidCategory: " + category);
+    console.log("Repository::isValidCategory: " + category);
     return categories.includes(category);
   }
 
   async getAllRecipes() {
-    console.log("getAllRecipes");
+    console.log("Repository::getAllRecipes");
     return JSON.parse(JSON.stringify(this.recipes)); //NOTE: return deep copy of dictionary (feels kind of hacky this way)
   }
 
   async getRecipe(id) {
-    console.log("getRecipe: " + id);
+    console.log("Repository::getRecipe: " + id);
     return this.recipes[id];
   }
 
   async saveRecipe(newRecipe) {
-    console.log("saveRecipe " + JSON.stringify(newRecipe));
+    console.log("Repository::saveRecipe " + JSON.stringify(newRecipe));
     var nextId = getNextId(this.recipes); //TODO: call the API for DB interactions here
     this.recipes[nextId] = newRecipe;
     return nextId;
