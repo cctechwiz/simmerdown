@@ -1,3 +1,4 @@
+import Api from '../../services/Api.js'
 import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 
@@ -22,6 +23,9 @@ let ListRecipes = {
   
   after_render : async () => {
     console.log("Home after_render");
+
+    let allApiRecipes = await Api.getAllRecipes();
+    console.log(allApiRecipes);
 
     let newRecipeBtn = document.getElementById("home-new-recipe-btn");
     newRecipeBtn.addEventListener("click", () => { window.location = "/#/new" });
