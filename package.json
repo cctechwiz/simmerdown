@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/cctechwiz/simmerdown#readme",
   "dependencies": {
-    "faunadb": "^2.14.2"
+    "node-fetch": "^2.6.0"
   }
 }

@@ -27,6 +27,9 @@ let ListRecipes = {
     let allApiRecipes = await Api.getAllRecipes();
     console.log(allApiRecipes);
 
+    let testRecipe = await Api.getRecipeById("269095245667369480");
+    console.log(testRecipe);
+
     let newRecipeBtn = document.getElementById("home-new-recipe-btn");
     newRecipeBtn.addEventListener("click", () => { window.location = "/#/new" });
 
