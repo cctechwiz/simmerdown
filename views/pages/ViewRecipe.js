@@ -10,6 +10,7 @@ let ViewRecipe = {
     let view = /*html*/`
       <section>
         <h1>ViewRecipe ${request.id}</h1>
+        <button id="view-home-btn">Home</button>
 
         <h1 id="view-title"></h1>
 
@@ -51,6 +52,11 @@ let ViewRecipe = {
     let directions = document.getElementById("view-directions");
     recipe.directions.forEach(directionDescription => {
       HtmlBuilder.addChild(directions, "div", directionDescription);
+    });
+
+    let homeBtn = document.querySelector("#view-home-btn");
+    homeBtn.addEventListener("click", () => {
+      window.location = `/#/`;
     });
 
     let editRecipeBtn = document.querySelector("#view-edit-recipe-btn");
