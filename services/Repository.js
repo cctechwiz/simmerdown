@@ -1,3 +1,5 @@
+import Api from './Api.js'
+
 const categories = [
   "breakfast",
   "lunch",
@@ -40,6 +42,9 @@ class Repository {
   }
 
   async saveRecipe(newRecipe) {
+    let savedRecipe = await Api.createRecipe(newRecipe);
+    console.log(savedRecipe);
+    //TODO: use returned ID and cache returned object
     console.log("Repository::saveRecipe " + JSON.stringify(newRecipe));
     var nextId = getNextId(this.recipes); //TODO: call the API for DB interactions here
     this.recipes[nextId] = newRecipe;

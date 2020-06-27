@@ -35,9 +35,7 @@ exports.handler = async (event, context) => {
         "Content-Type": "application/json",
         "Accept": "application/json",
       },
-      body: JSON.stringify({
-        query: event.body
-      }),
+      body: event.body,
     };
     console.log(options.body);
 

@@ -1,10 +1,10 @@
 type Recipe {
   title: String!
-  categories: [String!]!
-  ingredients: [String!]!
-  directions: [String!]!
+  categories: [String]
+  ingredients: [String]
+  directions: [String]
 }
 
 type Query {
-  getAllRecipes: [Recipe!]!
+  getAllRecipes: [Recipe]
 }
