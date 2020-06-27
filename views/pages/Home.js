@@ -1,4 +1,3 @@
-import Api from '../../services/Api.js'
 import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 
@@ -24,12 +23,6 @@ let ListRecipes = {
   after_render : async () => {
     console.log("Home after_render");
 
-    let allApiRecipes = await Api.getAllRecipes();
-    console.log(allApiRecipes);
-
-    let testRecipe = await Api.getRecipeById("269095245667369480");
-    console.log(testRecipe);
-
     let newRecipeBtn = document.getElementById("home-new-recipe-btn");
     newRecipeBtn.addEventListener("click", () => { window.location = "/#/new" });
 
@@ -40,14 +33,12 @@ let ListRecipes = {
     });
 
     let allRecipes = await Repository.getAllRecipes();
-    console.log(allRecipes);
     let recipesSection = document.getElementById("home-recipes")
-    for(var recipeId in allRecipes) {
-      //TODO: Turn this into a card instead of a link and br
-      let link = HtmlBuilder.addChild(recipesSection, "a", allRecipes[recipeId].title);
-      link.href = `/#/view/${recipeId}`;
+    allRecipes.forEach(recipe => {
+      let link = HtmlBuilder.addChild(recipesSection, "a", recipe.title);
+      link.href = `/#/view/${recipe._id}`;
       HtmlBuilder.addChild(recipesSection, "br");
-    };
+    });
   }
 
 };

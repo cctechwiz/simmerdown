@@ -148,7 +148,7 @@ async function saveRecipe() {
   });
 
   console.log(newRecipe);
-  var recipeId = await Repository.saveRecipe(newRecipe);
+  var recipeId = await Repository.createRecipe(newRecipe);
   console.log("Saved new recipe with id: " + recipeId);
 
   if(window.confirm("Create another new recipe?")) {

@@ -13,11 +13,6 @@ class Repository {
   constructor() {
     //TODO: Could be in LocalStorage so it doesn't get blown away every reload?
     this.recipes = {
-      1: {title: "one", ingredients: ["a1", "b1", "c1"], directions: ["dir1", "dir2"], categories: ["breakfast", "bread"]},
-      2: {title: "two", ingredients: ["a2", "b2", "c2"], directions: ["dir1"], categories: ["breakfast"]},
-      3: {title: "three", ingredients: ["a3", "b3", "c3"], directions: ["dir1"], categories: ["bread"]},
-      4: {title: "four", ingredients: ["a4", "b4", "c4"], directions: ["dir1"], categories: ["dinner", "bread"]},
-      5: {title: "five", ingredients: ["a5", "b5", "c5"], directions: ["dir1"], categories: ["dessert"]},
     };
   }
 
@@ -33,34 +28,56 @@ class Repository {
 
   async getAllRecipes() {
     console.log("Repository::getAllRecipes");
-    return JSON.parse(JSON.stringify(this.recipes)); //NOTE: return deep copy of dictionary (feels kind of hacky this way)
+
+    let allRecipes = await Api.getAllRecipes();
+    console.log(allRecipes);
+
+    return allRecipes;
+    //return JSON.parse(JSON.stringify(this.recipes)); //NOTE: return deep copy of dictionary (feels kind of hacky this way)
   }
 
   async getRecipe(id) {
     console.log("Repository::getRecipe: " + id);
-    return this.recipes[id];
+
+    let recipe = await Api.getRecipeById(id);
+    console.log(recipe);
+
+    return recipe;
+    //return this.recipes[id];
   }
 
-  async saveRecipe(newRecipe) {
-    let savedRecipe = await Api.createRecipe(newRecipe);
-    console.log(savedRecipe);
-    //TODO: use returned ID and cache returned object
+  async createRecipe(newRecipe) {
     console.log("Repository::saveRecipe " + JSON.stringify(newRecipe));
-    var nextId = getNextId(this.recipes); //TODO: call the API for DB interactions here
-    this.recipes[nextId] = newRecipe;
-    return nextId;
+
+    let recipe = await Api.createRecipe(newRecipe);
+    console.log(recipe);
+    
+    return recipe._id;
+    //var nextId = getNextId(this.recipes); //TODO: call the API for DB interactions here
+    //this.recipes[nextId] = newRecipe;
+    //return nextId;
   }
 
   async updateRecipe(updatedRecipe) {
     console.log("Repository::updateRecipe " + JSON.stringify(updatedRecipe));
-    this.recipes[updatedRecipe.id] = updatedRecipe;
-    return updatedRecipe.id;
+
+    let recipe = await Api.updateRecipe(updatedRecipe);
+    console.log(recipe);
+
+    return recipe._id;
+    //this.recipes[updatedRecipe.id] = updatedRecipe;
+    //return updatedRecipe.id;
+  }
+
+  async deleteRecipe(id) {
+    console.log("Repository::deleteRecipe: " + id);
+
+    let recipe = await Api.deleteRecipe(id);
+    console.log(recipe);
+
+    return recipe;
   }
 };
-
-function getNextId(recipes) {
-  return Math.max.apply(null, Object.keys(recipes)) + 1;
-}
 
 //Modern JS Singleton Pattern
 const RepositoryInstance = new Repository();

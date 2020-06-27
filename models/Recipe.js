@@ -1,6 +1,6 @@
 class Recipe {
   constructor(title) {
-    this.id = -1;
+    this._id = -1;
     this.title = title;
     this.categories = [];
     this.ingredients = [];

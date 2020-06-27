@@ -23,6 +23,7 @@ let ViewRecipe = {
 
         <br>
         <button id="view-edit-recipe-btn">Edit Recipe</button>
+        <button id="view-delete-recipe-btn">Delete Recipe</button>
       </section>
     `
     return view;
@@ -33,7 +34,6 @@ let ViewRecipe = {
 
     let request = UrlParser.getRequest();
     let recipe = await Repository.getRecipe(request.id);
-    console.log(recipe);
 
     let title = document.getElementById("view-title");
     title.innerText = recipe.title;
@@ -56,6 +56,16 @@ let ViewRecipe = {
     let editRecipeBtn = document.querySelector("#view-edit-recipe-btn");
     editRecipeBtn.addEventListener("click", () => {
       window.location = `/#/edit/${request.id}`;
+    });
+
+    let deleteRecipeBtn = document.querySelector("#view-delete-recipe-btn");
+    deleteRecipeBtn.addEventListener("click", async () => {
+      if (window.confirm("Delete this recipe?")) {
+        let deletedRecipe = await Repository.deleteRecipe(request.id);
+        console.log(`Deleted ${JSON.stringify(deletedRecipe)}`);
+        //TODO: Prompt for an 'undo' option, re-create this recipe
+        window.location = `/#/`;
+      }
     });
   }
 

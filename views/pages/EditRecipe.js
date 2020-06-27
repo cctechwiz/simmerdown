@@ -42,7 +42,6 @@ let EditRecipe = {
     
     let request = UrlParser.getRequest();
     let recipe = await Repository.getRecipe(request.id);
-    console.log(recipe);
 
     document.querySelector("#edit-title input[type='text'").value = recipe.title;
 
@@ -159,7 +158,7 @@ async function saveRecipe(recipeId) {
   }
 
   let updatedRecipe = new Recipe(titleElem.value);
-  updatedRecipe.id = recipeId;
+  updatedRecipe._id = recipeId;
 
   let categoryElems = document.querySelectorAll("#edit-categories input[type='checkbox']");
   categoryElems.forEach((checkbox) => {

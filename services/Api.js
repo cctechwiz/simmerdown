@@ -109,6 +109,80 @@ const Api = {
     } catch (err) {
       console.log(err);
     }
+  },
+
+  updateRecipe : async (recipe) => {
+    const url = '/.netlify/functions/fauna-graphql';
+    const user = netlifyIdentity.currentUser();
+    try {
+      const response = await fetch(url, {
+          method: "post",
+          headers: {
+            Authorization: 'Bearer ' + user?.token.access_token,
+            accept: "Accept: application/json"
+          },
+          body: JSON.stringify({
+            operationName: null,
+            variables: {
+              id: recipe._id,
+              title: recipe.title,
+              ingredients: recipe.ingredients,
+              directions: recipe.directions,
+              categories: recipe.categories,
+            },
+            query : `mutation($id: ID!,
+                              $title: String!, 
+                              $ingredients: [String!]!, 
+                              $directions: [String!]!, 
+                              $categories: [String!]!
+                            )
+            { updateRecipe(id: $id, data: {
+                title: $title
+                ingredients: $ingredients
+                directions: $directions
+                categories: $categories
+            })
+            {_id title ingredients directions categories} }`
+          })
+          ,
+        }
+      );
+      const rawData = await response.json();
+      const data = rawData.data.updateRecipe;
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  deleteRecipe : async (recipeId) => {
+    const url = '/.netlify/functions/fauna-graphql';
+    const user = netlifyIdentity.currentUser();
+    try {
+      const response = await fetch(url, {
+          method: "post",
+          headers: {
+            Authorization: 'Bearer ' + user?.token.access_token,
+            accept: "Accept: application/json"
+          },
+          body: JSON.stringify({
+            operationName: null,
+            variables: {
+              id: recipeId,
+            },
+            query : `mutation($id: ID!)
+            { deleteRecipe(id: $id)
+            {_id title ingredients directions categories} }`
+          })
+          ,
+        }
+      );
+      const rawData = await response.json();
+      const data = rawData.data.deleteRecipe;
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 };
 
