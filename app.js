@@ -18,7 +18,7 @@ const routes = {
 const router = async () => {
   console.log('Hello, from app.js router!');
 
-  const data = await Api.test();
+  const data = await Api.testLoggedIn();
   console.log(data);
 
   const content = null || document.getElementById('page_container');
