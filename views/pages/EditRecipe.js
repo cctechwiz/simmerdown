@@ -43,7 +43,7 @@ let EditRecipe = {
     let request = UrlParser.getRequest();
     let recipe = await Repository.getRecipe(request.id);
 
-    document.querySelector("#edit-title input[type='text'").value = recipe.title;
+    document.querySelector("#edit-title input[type='text']").value = recipe.title;
 
     setupCategories(recipe.categories);
 

@@ -1,3 +1,5 @@
+import Header from './views/components/Header.js'
+
 import Home from './views/pages/Home.js'
 import NewRecipe from './views/pages/NewRecipe.js'
 import Viewrecipe from './views/pages/ViewRecipe.js'
@@ -21,6 +23,7 @@ const router = async () => {
   const data = await Api.testLoggedIn();
   console.log(data);
 
+  const header = null || document.getElementById('header_container');
   const content = null || document.getElementById('page_container');
 
   let request = UrlParser.getRequest();
@@ -28,6 +31,9 @@ const router = async () => {
   let parsedUrl = UrlParser.getRoutableUrl(request);
   console.log(parsedUrl);
   let page = routes[parsedUrl] ? routes[parsedUrl] : Error404;
+
+  header.innerHTML = await Header.render();
+  await Header.after_render(parsedUrl);
 
   content.innerHTML = await page.render();
   await page.after_render();
