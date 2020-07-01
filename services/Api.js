@@ -54,7 +54,7 @@ const Api = {
     };
 
     const data = await executeGraphql(query, "getAllRecipes");
-    if (!data.length) {
+    if (!data?.data.length) {
       return [];
     }
     return data?.data;

@@ -1,11 +1,12 @@
 import Api from './Api.js'
 
 const categories = [
-  "breakfast",
-  "lunch",
-  "dinner",
-  "dessert",
-  "bread"
+  "Breakfast",
+  "Lunch",
+  "Dinner",
+  "Dessert",
+  "Bread",
+  "Other"
 ];
 
 class Repository {
