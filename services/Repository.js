@@ -13,8 +13,8 @@ class Repository {
   
   constructor() {
     //TODO: Could be in LocalStorage so it doesn't get blown away every reload?
-    this.recipes = {
-    };
+    this.recipes = [];
+    this.isCached = false;
   }
 
   getAllCategories() {
@@ -30,52 +30,59 @@ class Repository {
   async getAllRecipes() {
     console.log("Repository::getAllRecipes");
 
-    let allRecipes = await Api.getAllRecipes();
-    console.log(allRecipes);
+    if (!this.isCached) {
+      console.log("Recipes not cached, fetching from server...");
+      let fetchedRecipes = await Api.getAllRecipes();
+      this.recipes = fetchedRecipes;
+      this.isCached = true;
+    }
 
-    return allRecipes;
-    //return JSON.parse(JSON.stringify(this.recipes)); //NOTE: return deep copy of dictionary (feels kind of hacky this way)
+    console.log(this.recipes);
+    return [...this.recipes];
   }
 
   async getRecipe(id) {
     console.log("Repository::getRecipe: " + id);
 
-    let recipe = await Api.getRecipeById(id);
+    let recipe = this.recipes.find(r => r._id == id);
+    if (!recipe) {
+      console.log(`Recipe ${id} not cached, fetching from server...`);
+      recipe = await Api.getRecipeById(id);
+    }
+    
     console.log(recipe);
-
     return recipe;
-    //return this.recipes[id];
   }
 
   async createRecipe(newRecipe) {
     console.log("Repository::saveRecipe " + JSON.stringify(newRecipe));
 
     let recipe = await Api.createRecipe(newRecipe);
+    this.recipes.push(recipe);
+
     console.log(recipe);
-    
     return recipe._id;
-    //var nextId = getNextId(this.recipes); //TODO: call the API for DB interactions here
-    //this.recipes[nextId] = newRecipe;
-    //return nextId;
   }
 
   async updateRecipe(updatedRecipe) {
     console.log("Repository::updateRecipe " + JSON.stringify(updatedRecipe));
 
     let recipe = await Api.updateRecipe(updatedRecipe);
-    console.log(recipe);
 
+    let idx = this.recipes.findIndex(r => r._id == recipe.id);
+    this.recipes[idx] = recipe;
+
+    console.log(recipe);
     return recipe._id;
-    //this.recipes[updatedRecipe.id] = updatedRecipe;
-    //return updatedRecipe.id;
   }
 
   async deleteRecipe(id) {
     console.log("Repository::deleteRecipe: " + id);
 
+    this.recipes = this.recipes.filter(r => r._id != id);
     let recipe = await Api.deleteRecipe(id);
-    console.log(recipe);
 
+    console.log(recipe);
     return recipe;
   }
 };
