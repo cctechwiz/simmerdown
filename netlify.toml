@@ -2,5 +2,7 @@
 ID = "simmerdown"
 
 [build]
-command = "cd functions/fauna-graphql; npm install"
+command = "#"
 functions = "functions"
+
+[plugins] package = "@netlify/plugin-functions-install-core"
