@@ -1,0 +1,14 @@
+{
+  "name": "fauna-graphql",
+  "version": "1.0.0",
+  "description": "Serverless function to safely call the FaunaDB GraphQL endpoints for Simmerdown.",
+  "main": "fauna-graphql.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cctechwiz (aka Josh Maxwell)",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
