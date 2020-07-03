@@ -188,6 +188,4 @@ async function saveRecipe(recipeId) {
   window.location = `/#/view/${updatedRecipeId}`;
 }
 
-
-
 export default EditRecipe;
