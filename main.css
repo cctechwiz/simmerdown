@@ -1,0 +1,5 @@
+#header_container, #page_container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
