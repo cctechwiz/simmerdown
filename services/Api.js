@@ -41,7 +41,9 @@ const Api = {
         }
       });
 
-      return await response.json();
+      const data = await response.json();
+      data.user = user;
+      return data;
     } catch (err) {
       console.log(err);
     }

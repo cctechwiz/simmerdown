@@ -20,9 +20,6 @@ const routes = {
 const router = async () => {
   console.log('Hello, from app.js router!');
 
-  const data = await Api.testLoggedIn();
-  console.log(data);
-
   const header = null || document.getElementById('header_container');
   const content = null || document.getElementById('page_container');
 
@@ -33,6 +30,14 @@ const router = async () => {
   header.innerHTML = await Header.render();
   await Header.after_render();
 
+  const userStatus = await Api.testLoggedIn();
+  console.log(userStatus);
+  if (!userStatus.user) {
+    console.log("User not logged in");
+    netlifyIdentity.open();
+    return;
+  }
+
   content.innerHTML = await page.render();
   await page.after_render();
 };
@@ -40,3 +45,15 @@ const router = async () => {
 window.addEventListener('hashchange', router);
 
 window.addEventListener('load', router);
+
+netlifyIdentity.on('login', () => {
+  router();
+  netlifyIdentity.close();
+});
+
+netlifyIdentity.on('logout', () => {
+  const content = document.getElementById('page_container');
+  content.innerHTML = "";
+  router();
+  netlifyIdentity.close();
+});
