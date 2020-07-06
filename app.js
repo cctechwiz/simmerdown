@@ -46,14 +46,22 @@ window.addEventListener('hashchange', router);
 
 window.addEventListener('load', router);
 
+netlifyIdentity.on('close', () => {
+  console.log("netlifyIdentity close event");
+  const user = netlifyIdentity.currentUser();
+  if (user) {
+    router();
+  }
+});
+
 netlifyIdentity.on('login', () => {
-  router();
+  console.log("netlifyIdentity login event");
   netlifyIdentity.close();
 });
 
 netlifyIdentity.on('logout', () => {
+  console.log("netlifyIdentity logout event");
   const content = document.getElementById('page_container');
   content.innerHTML = "";
-  router();
   netlifyIdentity.close();
 });
