@@ -26,6 +26,14 @@ let Home = {
     searchBox.addEventListener("keyup", (event) => {
       if(event.keyCode == 13) {
         searchBox.blur();
+
+        if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+          var viewportmeta = document.querySelector('meta[name="viewport"]');
+          if (viewportmeta) {
+            viewportmeta.setAttribute('content', 'width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0');
+            viewportmeta.setAttribute('content', 'width=device-width, minimum-scale=1.0, initial-scale=1.0');
+          }
+       }
       }
     });
 
