@@ -11,8 +11,6 @@ let EditRecipe = {
     console.log("EditRecipe render");
     let view = /*html*/`
       <section>
-        <h1>EditRecipe ${request.id}</h1>
-        
         <h1>Title:</h1>
         <div id="edit-title">
           <input type="text" name="title">
@@ -27,10 +25,9 @@ let EditRecipe = {
         <h1>Directions: <button id=edit-directions-btn>+</button></h1>
         <div id="edit-directions"></div>
 
-        <div>
-          <br>
-          <button id=edit-save-btn>Save Edits</button>
-          <button id=edit-discard-btn>Discard Edits</button>
+        <div  class="footer-buttons">
+          <button id=edit-save-btn class="button-left">+</button>
+          <button id=edit-discard-btn class="button-right">x</button>
         </div>
       </section>
     `

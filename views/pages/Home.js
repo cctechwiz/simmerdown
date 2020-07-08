@@ -10,9 +10,12 @@ let Home = {
           <label>Search <input type="text"/></label>
         </div>
 
-        <button id="home-new-recipe-btn">New Recipe</button>
-
         <div id="home-categories"></div>
+
+        <div class="footer-buttons">
+          <button id="home-new-recipe-btn" class="button-right">+</button>
+        <div>
+
       </section>
     `
     return view;

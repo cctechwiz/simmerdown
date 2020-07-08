@@ -8,27 +8,30 @@ let NewRecipes = {
     console.log("NewRecipes render");
     let view = /*html*/`
       <section>
-        <h1>New Recipe</h1>
+        <h1>Title:
+          <div id="new-title">
+            <input type="text" name="title">
+          </div>
+        </h1>
 
-        <h1>Title:</h1>
-        <div id="new-title">
-          <input type="text" name="title">
-        </div>
+        <h1>Categories:
+          <div id="new-categories"></div>
+        </h1>
 
-        <h1>Categories:</h1>
-        <div id="new-categories"></div>
+        <h1>Ingredients: 
+          <button id=new-ingredients-btn>+</button>
+          <div id="new-ingredients"></div>
+        </h1>
 
-        <h1>Ingredients: <button id=new-ingredients-btn>+</button></h1>
-        <div id="new-ingredients"></div>
+        <h1>Directions: 
+          <button id=new-directions-btn>+</button>
+          <div id="new-directions"></div>
+        </h1>
 
-        <h1>Directions: <button id=new-directions-btn>+</button></h1>
-        <div id="new-directions"></div>
-
+        <div class="footer-buttons">
+          <button id=new-save-btn class="button-left">+</button>
+          <button id=new-discard-btn class="button-right">x</button>
         <div>
-          <br>
-          <button id=new-save-btn>Save Recipe</button>
-          <button id=new-discard-btn>Discard Recipe</button>
-        </div>
       </section>
     `
     return view;

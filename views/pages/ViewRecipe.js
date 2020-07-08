@@ -9,22 +9,20 @@ let ViewRecipe = {
     console.log("ViewRecipe render");
     let view = /*html*/`
       <section>
-        <h1>ViewRecipe ${request.id}</h1>
-        <button id="view-home-btn">Home</button>
-
         <h1 id="view-title"></h1>
 
         <div id="view-categories"></div>
 
         <h1>Ingredients:</h1>
-        <div id="view-ingredients"></div>
+        <ul id="view-ingredients"></ul>
 
         <h1>Directions:</h1>
-        <div id="view-directions"></div>
+        <ul id="view-directions"></ul>
 
-        <br>
-        <button id="view-edit-recipe-btn">Edit Recipe</button>
-        <button id="view-delete-recipe-btn">Delete Recipe</button>
+        <div class="footer-buttons">
+          <button id="view-edit-recipe-btn" class="button-left">Edit</button>
+          <button id="view-delete-recipe-btn" class="button-right">Del</button>
+        <div>
       </section>
     `
     return view;
@@ -41,22 +39,17 @@ let ViewRecipe = {
 
     let categories = document.getElementById("view-categories");
     recipe.categories.forEach(categoryDescription => {
-      HtmlBuilder.addChild(categories, "div", categoryDescription);
+      HtmlBuilder.addChild(categories, "span", categoryDescription);
     });
 
     let ingredients = document.getElementById("view-ingredients");
     recipe.ingredients.forEach(ingredientDescription => {
-      HtmlBuilder.addChild(ingredients, "div", ingredientDescription);
+      HtmlBuilder.addChild(ingredients, "li", ingredientDescription);
     });
 
     let directions = document.getElementById("view-directions");
     recipe.directions.forEach(directionDescription => {
-      HtmlBuilder.addChild(directions, "div", directionDescription);
-    });
-
-    let homeBtn = document.querySelector("#view-home-btn");
-    homeBtn.addEventListener("click", () => {
-      window.location = `/#/`;
+      HtmlBuilder.addChild(directions, "li", directionDescription);
     });
 
     let editRecipeBtn = document.querySelector("#view-edit-recipe-btn");
