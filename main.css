@@ -1,5 +1,74 @@
-#header_container, #page_container {
+body {
+  margin: 0;
+  background-color: mediumaquamarine;
+}
+
+#header-container, #page-container {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+#header-container {
+  margin: 0;
+  margin-bottom: 1rem;
+  background-color: aquamarine;
+}
+
+#header-link {
+  text-decoration: none;
+  color: black;
+}
+
+#header-link:hover {
+  color: mediumaquamarine;
+}
+
+#netlify-identity {
+  position: absolute;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+}
+
+#page-container section {
+  width: 80%;
+}
+
+.category-header {
+  background-color: cadetblue;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 0.5rem;
+}
+
+.category-header:hover {
+  cursor: pointer;
+}
+
+.category-header .category-toggle {
+  width: 2rem;
+  float: right;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  margin-bottom: 0.5rem;
+  background-color: paleturquoise;
+}
+
+.card:hover {
+  /* On mouse-over, add a deeper shadow */
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  width: 100%;
+  height: 100%;
 }

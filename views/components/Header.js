@@ -3,7 +3,9 @@ let Header = {
       console.log("Header render");
 
       let view = /*html*/`
-        <h1><a href="/#/">Simmerdown</a></h1>
+      <a id="header-link" href="/#/">
+        <h1>Simmerdown</h1>
+      </a>
       `
       return view;
     },

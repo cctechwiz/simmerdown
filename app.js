@@ -20,8 +20,8 @@ const routes = {
 const router = async () => {
   console.log('Hello, from app.js router!');
 
-  const header = null || document.getElementById('header_container');
-  const content = null || document.getElementById('page_container');
+  const header = null || document.getElementById('header-container');
+  const content = null || document.getElementById('page-container');
 
   const request = UrlParser.getRequest();
   const parsedUrl = UrlParser.getRoutableUrl(request);
