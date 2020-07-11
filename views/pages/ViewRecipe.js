@@ -20,8 +20,12 @@ let ViewRecipe = {
         <ul id="view-directions"></ul>
 
         <div class="footer-buttons">
-          <button id="view-edit-recipe-btn" class="button-left">Edit</button>
-          <button id="view-delete-recipe-btn" class="button-right">Del</button>
+          <button id="view-edit-recipe-btn" class="button-left">
+            <i class="fas fa-pen"></i>
+          </button>
+          <button id="view-delete-recipe-btn" class="button-right">
+            <i class="far fa-trash-alt"></i>
+          </button>
         <div>
       </section>
     `

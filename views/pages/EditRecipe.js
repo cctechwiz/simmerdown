@@ -6,8 +6,6 @@ import Recipe from '../../models/Recipe.js'
 
 let EditRecipe = {
   render : async () => {
-    let request = UrlParser.getRequest()
-
     console.log("EditRecipe render");
     let view = /*html*/`
       <section>
@@ -19,15 +17,19 @@ let EditRecipe = {
         <h1>Categories:</h1>
         <div id="edit-categories"></div>
 
-        <h1>Ingredients: <button id=edit-ingredients-btn>+</button></h1>
+        <h1>Ingredients: <button id=edit-ingredients-btn><i class="fas fa-plus"></i></button></h1>
         <div id="edit-ingredients"></div>
 
-        <h1>Directions: <button id=edit-directions-btn>+</button></h1>
+        <h1>Directions: <button id=edit-directions-btn><i class="fas fa-plus"></i></button></h1>
         <div id="edit-directions"></div>
 
         <div  class="footer-buttons">
-          <button id=edit-save-btn class="button-left">+</button>
-          <button id=edit-discard-btn class="button-right">x</button>
+          <button id=edit-save-btn class="button-left">
+            <i class="fas fa-check"></i>
+          </button>
+          <button id=edit-discard-btn class="button-right">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
       </section>
     `

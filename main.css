@@ -112,7 +112,8 @@ Category Headers
   pointer-events: none;
 }
 .footer-buttons button {
-  padding: 1rem;
+  padding: 1.5rem;
+  text-align: center;
   border:solid 2px aquamarine;
   border-radius: 100%;
   pointer-events: all;

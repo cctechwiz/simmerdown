@@ -29,8 +29,12 @@ let NewRecipes = {
         </h1>
 
         <div class="footer-buttons">
-          <button id=new-save-btn class="button-left">+</button>
-          <button id=new-discard-btn class="button-right">x</button>
+          <button id=new-save-btn class="button-left">
+            <i class="fas fa-check"></i>
+          </button>
+          <button id=new-discard-btn class="button-right">
+            <i class="fas fa-times"></i>
+          </button>
         <div>
       </section>
     `

@@ -13,7 +13,9 @@ let Home = {
         <div id="home-categories"></div>
 
         <div class="footer-buttons">
-          <button id="home-new-recipe-btn" class="button-right">+</button>
+          <button id="home-new-recipe-btn" class="button-right">
+            <i class="fas fa-plus"></i>
+          </button>
         <div>
 
       </section>
