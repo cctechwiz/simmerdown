@@ -109,12 +109,13 @@ Category Headers
   bottom: 0%;
   width: 80%;
   padding-bottom: 2rem;
+  pointer-events: none;
 }
 .footer-buttons button {
-  padding: 2.5rem;
+  padding: 1rem;
   border:solid 2px aquamarine;
-  background: none;
   border-radius: 100%;
+  pointer-events: all;
 }
 .footer-buttons button:hover {
   background:aquamarine;
