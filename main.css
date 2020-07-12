@@ -112,7 +112,7 @@ html.nontouch .card:hover {
   pointer-events: none;
 }
 .footer-buttons button {
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: paleturquoise;
   text-align: center;
   border:solid 2px aquamarine;

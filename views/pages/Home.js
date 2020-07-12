@@ -14,7 +14,7 @@ let Home = {
 
         <div class="footer-buttons">
           <button id="home-new-recipe-btn" class="button-right">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-plus fa-2x"></i>
           </button>
         <div>
 
