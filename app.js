@@ -20,6 +20,13 @@ const routes = {
 const router = async () => {
   console.log('Hello, from app.js router!');
 
+  var touchsupport = ('ontouchstart' in window)
+                     || (navigator.maxTouchPoints > 0)
+                     || (navigator.msMaxTouchPoints > 0);
+  if (!touchsupport){
+      document.documentElement.classList.add("non-touch");
+  }
+
   const header = null || document.getElementById('header-container');
   const content = null || document.getElementById('page-container');
 

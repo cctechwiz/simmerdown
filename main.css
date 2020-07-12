@@ -23,7 +23,7 @@ input, select {
   text-decoration: none;
   color: black;
 }
-#header-link:hover {
+html.nontouch #header-link:hover {
   color: mediumaquamarine;
 }
 
@@ -64,7 +64,7 @@ Category Headers
   margin-bottom: 0.5rem;
   background-color: paleturquoise;
 }
-.card:hover {
+html.nontouch .card:hover {
   /* On mouse-over, add a deeper shadow */
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -118,7 +118,7 @@ Category Headers
   border-radius: 100%;
   pointer-events: all;
 }
-.footer-buttons button:hover {
+html.nontouch .footer-buttons button:hover {
   background:aquamarine;
 }
 .footer-buttons .button-left {
