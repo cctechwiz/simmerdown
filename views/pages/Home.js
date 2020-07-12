@@ -62,7 +62,9 @@ function setupCategoryHeaders() {
     categoryCount.classList.add("category-count");
 
 
-    const categoryToggle = HtmlBuilder.addChild(categoryHeader, "span", "+");
+    const categoryToggle = HtmlBuilder.addChild(categoryHeader, "span", "");
+    categoryToggle.classList.add("fas");
+    categoryToggle.classList.add("fa-plus");
     categoryToggle.classList.add("category-toggle");
 
     const categoryRecipes = HtmlBuilder.addChild(categorySection, "div");
@@ -75,12 +77,14 @@ function setupCategoryHeaders() {
 function toggleCategoryCollapse() {
   const recipesSection = this.parentElement.querySelector(".recipes-section");
   const toggleStatus = this.querySelector(".category-toggle");
-  if (toggleStatus.textContent == "-") {
+  if (toggleStatus.classList.contains("fa-minus")) {
     recipesSection.hidden = true;
-    toggleStatus.textContent = "+";
+    toggleStatus.classList.add("fa-plus");
+    toggleStatus.classList.remove("fa-minus");
   } else {
     recipesSection.hidden = false;
-    toggleStatus.textContent = "-";
+    toggleStatus.classList.add("fa-minus");
+    toggleStatus.classList.remove("fa-plus");
   }
 }
 

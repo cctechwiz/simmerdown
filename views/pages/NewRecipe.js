@@ -30,10 +30,10 @@ let NewRecipes = {
 
         <div class="footer-buttons">
           <button id=new-save-btn class="button-left">
-            <i class="fas fa-check"></i>
+            <i class="fas fa-check fa-2x"></i>
           </button>
           <button id=new-discard-btn class="button-right">
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times fa-2x"></i>
           </button>
         <div>
       </section>

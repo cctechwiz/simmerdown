@@ -17,18 +17,18 @@ let EditRecipe = {
         <h1>Categories:</h1>
         <div id="edit-categories"></div>
 
-        <h1>Ingredients: <button id=edit-ingredients-btn><i class="fas fa-plus"></i></button></h1>
+        <h1>Ingredients: <button id=edit-ingredients-btn><i class="fas fa-plus fa-2x"></i></button></h1>
         <div id="edit-ingredients"></div>
 
-        <h1>Directions: <button id=edit-directions-btn><i class="fas fa-plus"></i></button></h1>
+        <h1>Directions: <button id=edit-directions-btn><i class="fas fa-plus fa-2x"></i></button></h1>
         <div id="edit-directions"></div>
 
         <div  class="footer-buttons">
           <button id=edit-save-btn class="button-left">
-            <i class="fas fa-check"></i>
+            <i class="fas fa-check fa-2x"></i>
           </button>
           <button id=edit-discard-btn class="button-right">
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times fa-3x"></i>
           </button>
         </div>
       </section>
