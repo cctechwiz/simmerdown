@@ -128,5 +128,9 @@ html.nontouch .footer-buttons button:hover {
 .footer-buttons .button-right {
   float: right;
 }
+.footer-buttons .fa-times {
+  padding-right: .2rem;
+  padding-left: .2rem;
+}
 
 

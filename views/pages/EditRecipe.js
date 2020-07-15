@@ -28,7 +28,7 @@ let EditRecipe = {
             <i class="fas fa-check fa-2x"></i>
           </button>
           <button id=edit-discard-btn class="button-right">
-            <i class="fas fa-times fa-3x"></i>
+            <i class="fas fa-times fa-2x"></i>
           </button>
         </div>
       </section>
