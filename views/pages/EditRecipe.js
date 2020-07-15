@@ -9,18 +9,27 @@ let EditRecipe = {
     console.log("EditRecipe render");
     let view = /*html*/`
       <section>
-        <h1>Title:</h1>
-        <div id="edit-title">
-          <input type="text" name="title">
-        </div>
+        <h1>Title:
+          <div id="edit-title">
+            <input type="text" name="title">
+          </div>
+        </h1>
 
         <h1>Categories:</h1>
         <div id="edit-categories"></div>
 
-        <h1>Ingredients: <button id=edit-ingredients-btn><i class="fas fa-plus fa-2x"></i></button></h1>
+        <h1>Ingredients: 
+          <button id=edit-ingredients-btn class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
+        </h1>
         <div id="edit-ingredients"></div>
 
-        <h1>Directions: <button id=edit-directions-btn><i class="fas fa-plus fa-2x"></i></button></h1>
+        <h1>Directions: 
+          <button id=edit-directions-btn class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
+        </h1>
         <div id="edit-directions"></div>
 
         <div  class="footer-buttons">
@@ -83,12 +92,14 @@ function setupIngredients(ingredients) {
 
   ingredients.forEach(ingredient => {
     let ingredientDiv = HtmlBuilder.addChild(ingredientsContainer, "div");
-    ingredientDiv.classList.add("edit-ingredient-container");
+    ingredientDiv.classList.add("input-container");
     let ingredientInput = HtmlBuilder.addChild(ingredientDiv, "input");
     ingredientInput.type = "text";
     ingredientInput.value = ingredient;
 
-    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button", "x");
+    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button");
+    removeIngredient.classList.add("fas");
+    removeIngredient.classList.add("fa-times");
     removeIngredient.addEventListener("click", () => {
       ingredientsContainer.removeChild(ingredientDiv);
     });
@@ -96,11 +107,13 @@ function setupIngredients(ingredients) {
 
   ingredientsBtn.addEventListener("click", (clickEvent) => {
     let ingredientDiv = HtmlBuilder.addChild(ingredientsContainer, "div");
-    ingredientDiv.classList.add("edit-ingredient-container");
+    ingredientDiv.classList.add("input-container");
     let ingredientInput = HtmlBuilder.addChild(ingredientDiv, "input");
     ingredientInput.type = "text";
 
-    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button", "x");
+    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button");
+    removeIngredient.classList.add("fas");
+    removeIngredient.classList.add("fa-times");
     removeIngredient.addEventListener("click", () => {
       ingredientsContainer.removeChild(ingredientDiv);
     });
@@ -115,12 +128,14 @@ function setupDirections(directions) {
 
   directions.forEach(direction => {
     let directionDiv = HtmlBuilder.addChild(directionsContainer, "div");
-    directionDiv.classList.add("edit-direction-container");
+    directionDiv.classList.add("input-container");
     let directionInput = HtmlBuilder.addChild(directionDiv, "input");
     directionInput.type = "text";
     directionInput.value = direction;
 
-    let removedirection = HtmlBuilder.addChild(directionDiv, "button", "x");
+    let removedirection = HtmlBuilder.addChild(directionDiv, "button");
+    removedirection.classList.add("fas");
+    removedirection.classList.add("fa-times");
     removedirection.addEventListener("click", () => {
       directionsContainer.removeChild(directionDiv);
     });
@@ -128,11 +143,13 @@ function setupDirections(directions) {
 
   directionsBtn.addEventListener("click", () => {
     let directionDiv = HtmlBuilder.addChild(directionsContainer, "div");
-    directionDiv.classList.add("edit-direction-container");
+    directionDiv.classList.add("input-container");
     let directionInput = HtmlBuilder.addChild(directionDiv, "input");
     directionInput.type = "text";
 
-    let removedirection = HtmlBuilder.addChild(directionDiv, "button", "x");
+    let removedirection = HtmlBuilder.addChild(directionDiv, "button");
+    removedirection.classList.add("fas");
+    removedirection.classList.add("fa-times");
     removedirection.addEventListener("click", () => {
       directionsContainer.removeChild(directionDiv);
     });

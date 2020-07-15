@@ -14,19 +14,22 @@ let NewRecipes = {
           </div>
         </h1>
 
-        <h1>Categories:
-          <div id="new-categories"></div>
-        </h1>
+        <h1>Categories:</h1>
+        <div id="new-categories"></div>
 
         <h1>Ingredients: 
-          <button id=new-ingredients-btn>+</button>
-          <div id="new-ingredients"></div>
+          <button id=new-ingredients-btn class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
         </h1>
+        <div id="new-ingredients"></div>
 
         <h1>Directions: 
-          <button id=new-directions-btn>+</button>
-          <div id="new-directions"></div>
+          <button id=new-directions-btn class="add-button">
+            <i class="fas fa-plus"></i>
+          </button>
         </h1>
+        <div id="new-directions"></div>
 
         <div class="footer-buttons">
           <button id=new-save-btn class="button-left">
@@ -84,11 +87,13 @@ function setupIngredients() {
 
   ingredientsBtn.addEventListener("click", (clickEvent) => {
     let ingredientDiv = HtmlBuilder.addChild(ingredients, "div");
-    ingredientDiv.classList.add("new-ingredient-container");
+    ingredientDiv.classList.add("input-container");
     let ingredient = HtmlBuilder.addChild(ingredientDiv, "input");
     ingredient.type = "text";
 
-    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button", "x");
+    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button");
+    removeIngredient.classList.add("fas");
+    removeIngredient.classList.add("fa-times");
     removeIngredient.addEventListener("click", () => {
       ingredients.removeChild(ingredientDiv);
     });
@@ -103,11 +108,13 @@ function setupDirections() {
 
   directionsBtn.addEventListener("click", () => {
     let directionDiv = HtmlBuilder.addChild(directions, "div");
-    directionDiv.classList.add("new-direction-container");
+    directionDiv.classList.add("input-container");
     let direction = HtmlBuilder.addChild(directionDiv, "input");
     direction.type = "text";
 
-    let removedirection = HtmlBuilder.addChild(directionDiv, "button", "x");
+    let removedirection = HtmlBuilder.addChild(directionDiv, "button");
+    removedirection.classList.add("fas");
+    removedirection.classList.add("fa-times");
     removedirection.addEventListener("click", () => {
       directions.removeChild(directionDiv);
     });
