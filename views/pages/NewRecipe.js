@@ -86,19 +86,8 @@ function setupIngredients() {
   let ingredients = document.getElementById("new-ingredients");
 
   ingredientsBtn.addEventListener("click", (clickEvent) => {
-    let ingredientDiv = HtmlBuilder.addChild(ingredients, "div");
-    ingredientDiv.classList.add("input-container");
-    let ingredient = HtmlBuilder.addChild(ingredientDiv, "input");
-    ingredient.type = "text";
-
-    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button");
-    removeIngredient.classList.add("fas");
-    removeIngredient.classList.add("fa-times");
-    removeIngredient.addEventListener("click", () => {
-      ingredients.removeChild(ingredientDiv);
-    });
-
-    ingredient.focus();
+    let inputContainer = HtmlBuilder.addRemoveableInput(ingredients, "input");
+    inputContainer.querySelector("input").focus();
   });
 }
 
@@ -107,19 +96,8 @@ function setupDirections() {
   let directions = document.getElementById("new-directions");
 
   directionsBtn.addEventListener("click", () => {
-    let directionDiv = HtmlBuilder.addChild(directions, "div");
-    directionDiv.classList.add("input-container");
-    let direction = HtmlBuilder.addChild(directionDiv, "input");
-    direction.type = "text";
-
-    let removedirection = HtmlBuilder.addChild(directionDiv, "button");
-    removedirection.classList.add("fas");
-    removedirection.classList.add("fa-times");
-    removedirection.addEventListener("click", () => {
-      directions.removeChild(directionDiv);
-    });
-
-    direction.focus();
+    let inputContainer = HtmlBuilder.addRemoveableInput(directions, "textarea");
+    inputContainer.querySelector("textarea").focus();
   });
 }
 
@@ -154,7 +132,7 @@ async function saveRecipe() {
     }
   });
 
-  let directionElems = document.querySelectorAll("#new-directions input[type='text']");
+  let directionElems = document.querySelectorAll("#new-directions textarea");
   directionElems.forEach((direction) => {
     if (direction.value !== "") {
       newRecipe.addDirection(direction.value);

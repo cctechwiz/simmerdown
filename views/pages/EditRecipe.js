@@ -91,34 +91,12 @@ function setupIngredients(ingredients) {
   let ingredientsContainer = document.getElementById("edit-ingredients");
 
   ingredients.forEach(ingredient => {
-    let ingredientDiv = HtmlBuilder.addChild(ingredientsContainer, "div");
-    ingredientDiv.classList.add("input-container");
-    let ingredientInput = HtmlBuilder.addChild(ingredientDiv, "input");
-    ingredientInput.type = "text";
-    ingredientInput.value = ingredient;
-
-    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button");
-    removeIngredient.classList.add("fas");
-    removeIngredient.classList.add("fa-times");
-    removeIngredient.addEventListener("click", () => {
-      ingredientsContainer.removeChild(ingredientDiv);
-    });
+    HtmlBuilder.addRemoveableInput(ingredientsContainer, "input", ingredient);
   });
 
-  ingredientsBtn.addEventListener("click", (clickEvent) => {
-    let ingredientDiv = HtmlBuilder.addChild(ingredientsContainer, "div");
-    ingredientDiv.classList.add("input-container");
-    let ingredientInput = HtmlBuilder.addChild(ingredientDiv, "input");
-    ingredientInput.type = "text";
-
-    let removeIngredient = HtmlBuilder.addChild(ingredientDiv, "button");
-    removeIngredient.classList.add("fas");
-    removeIngredient.classList.add("fa-times");
-    removeIngredient.addEventListener("click", () => {
-      ingredientsContainer.removeChild(ingredientDiv);
-    });
-
-    ingredientInput.focus();
+  ingredientsBtn.addEventListener("click", () => {
+    let inputContainer = HtmlBuilder.addRemoveableInput(ingredientsContainer, "input");
+    inputContainer.querySelector("input").focus();
   });
 }
 
@@ -127,34 +105,12 @@ function setupDirections(directions) {
   let directionsContainer = document.getElementById("edit-directions");
 
   directions.forEach(direction => {
-    let directionDiv = HtmlBuilder.addChild(directionsContainer, "div");
-    directionDiv.classList.add("input-container");
-    let directionInput = HtmlBuilder.addChild(directionDiv, "input");
-    directionInput.type = "text";
-    directionInput.value = direction;
-
-    let removedirection = HtmlBuilder.addChild(directionDiv, "button");
-    removedirection.classList.add("fas");
-    removedirection.classList.add("fa-times");
-    removedirection.addEventListener("click", () => {
-      directionsContainer.removeChild(directionDiv);
-    });
+    HtmlBuilder.addRemoveableInput(directionsContainer, "textarea", direction);
   });
 
   directionsBtn.addEventListener("click", () => {
-    let directionDiv = HtmlBuilder.addChild(directionsContainer, "div");
-    directionDiv.classList.add("input-container");
-    let directionInput = HtmlBuilder.addChild(directionDiv, "input");
-    directionInput.type = "text";
-
-    let removedirection = HtmlBuilder.addChild(directionDiv, "button");
-    removedirection.classList.add("fas");
-    removedirection.classList.add("fa-times");
-    removedirection.addEventListener("click", () => {
-      directionsContainer.removeChild(directionDiv);
-    });
-
-    directionInput.focus();
+    let inputContainer = HtmlBuilder.addRemoveableInput(directionsContainer, "textarea");
+    inputContainer.querySelector("textarea").focus();
   });
 }
 
@@ -190,7 +146,7 @@ async function saveRecipe(recipeId) {
     }
   });
 
-  let directionElems = document.querySelectorAll("#edit-directions input[type='text']");
+  let directionElems = document.querySelectorAll("#edit-directions textarea");
   directionElems.forEach((direction) => {
     if (direction.value !== "") {
       updatedRecipe.addDirection(direction.value);
