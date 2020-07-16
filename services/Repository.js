@@ -69,7 +69,7 @@ class Repository {
 
     let recipe = await Api.updateRecipe(updatedRecipe);
 
-    let idx = this.recipes.findIndex(r => r._id == recipe.id);
+    let idx = this.recipes.findIndex(r => r._id == recipe._id);
     this.recipes[idx] = recipe;
 
     console.log(recipe);
