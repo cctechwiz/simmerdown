@@ -5,8 +5,7 @@ const categories = [
   "Lunch",
   "Dinner",
   "Dessert",
-  "Bread",
-  "Other"
+  "Bread"
 ];
 
 class Repository {

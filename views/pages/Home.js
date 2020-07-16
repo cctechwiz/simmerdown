@@ -46,7 +46,9 @@ let Home = {
 };
 
 function setupCategoryHeaders() {
-  const allCategories = Repository.getAllCategories();
+  let allCategories = Repository.getAllCategories();
+  allCategories.unshift("All");
+  allCategories.push("Other");
   const categoriesSection = document.querySelector("#home-categories");
   allCategories.forEach(category => {
     const categorySection = HtmlBuilder.addChild(categoriesSection, "div");
@@ -94,6 +96,7 @@ async function updateCategoryCounts(recipes) {
 
   let categoryCounts = {};
   recipes.forEach(recipe => {
+    categoryCounts["all"] = (categoryCounts["all"] || 0) + 1;
     if (!recipe.categories.length) {
       categoryCounts["other"] = (categoryCounts["other"] || 0) + 1;
     } else {
@@ -111,6 +114,7 @@ async function updateCategoryCounts(recipes) {
 
 async function loadRecipes(recipes) {
   recipes.forEach(recipe => {
+    addRecipeToCategory(recipe, "all")
     if (!recipe.categories.length) {
       addRecipeToCategory(recipe, "other")
     } else {
