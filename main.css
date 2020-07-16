@@ -101,6 +101,10 @@ html.nontouch .card:hover {
   width: 50%;
 }
 
+#view-ingredients {
+  column-count: 2;
+}
+
 /* **************
  Inputs & Buttons
 *************** */
