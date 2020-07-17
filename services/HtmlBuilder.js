@@ -16,8 +16,7 @@ const HtmlBuilder = {
     input.value = content;
 
     let removeBtn = HtmlBuilder.addChild(inputContainer, "button");
-    removeBtn.classList.add("fas");
-    removeBtn.classList.add("fa-times");
+    removeBtn.classList.add("fas", "fa-times");
     removeBtn.addEventListener("click", () => {
       parent.removeChild(inputContainer);
     });

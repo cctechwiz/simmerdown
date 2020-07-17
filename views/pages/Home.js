@@ -1,11 +1,15 @@
 import HtmlBuilder from '../../services/HtmlBuilder.js'
 import Repository from '../../services/Repository.js'
 
+import ModalConfirm from '../components/ModalConfirm.js'
+
 let Home = {
   render : async () => {
     console.log("Home render");
     let view = /*html*/`
       <section>
+        <button class="modal-btn-open">Modal</button>
+
         <div id=home-search-box>
           <label>Search <input type="text"/></label>
         </div>
@@ -25,6 +29,14 @@ let Home = {
   
   after_render : async () => {
     console.log("Home after_render");
+
+    const openModalBtn = document.querySelector(".modal-btn-open");
+    openModalBtn.addEventListener("click", async () => {
+      console.log("clicked modal button");
+      const modal = new ModalConfirm('Do the thing with a much longer question in the modal box?');
+      const response = await modal.confirm();
+      console.log(response);
+    });
 
     const searchBox = document.querySelector("#home-search-box input[type='text']");
     searchBox.addEventListener("keyup", debounce(filterRecipes, 250));
@@ -65,9 +77,7 @@ function setupCategoryHeaders() {
 
 
     const categoryToggle = HtmlBuilder.addChild(categoryHeader, "span", "");
-    categoryToggle.classList.add("fas");
-    categoryToggle.classList.add("fa-plus");
-    categoryToggle.classList.add("category-toggle");
+    categoryToggle.classList.add("fas", "fa-plus", "category-toggle");
 
     const categoryRecipes = HtmlBuilder.addChild(categorySection, "div");
     categoryRecipes.classList.add('recipes-section');
