@@ -3,6 +3,8 @@ import Repository from '../../services/Repository.js'
 
 import Recipe from '../../models/Recipe.js'
 
+import ModalConfirm from '../components/ModalConfirm.js'
+
 let NewRecipes = {
   render : async () => {
     console.log("NewRecipes render");
@@ -101,8 +103,10 @@ function setupDirections() {
   });
 }
 
-function discardRecipe() {
-  if (window.confirm("Discard new recipe?")) {
+async function discardRecipe() {
+  const modal = new ModalConfirm('Discard new recipe?', 'Discard recipe', "Keep Editing");
+  const response = await modal.confirm();
+  if (response) {
     window.location = "/#/";
   }
 }
@@ -143,7 +147,9 @@ async function saveRecipe() {
   var recipeId = await Repository.createRecipe(newRecipe);
   console.log("Saved new recipe with id: " + recipeId);
 
-  if(window.confirm("Create another new recipe?")) {
+  const modal = new ModalConfirm('Create another new recipe?', 'Another', "Done");
+  const response = await modal.confirm();
+  if (response) {
     resetPage();
   } else {
     window.location = `/#/view/${recipeId}`;

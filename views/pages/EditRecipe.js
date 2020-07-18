@@ -4,6 +4,8 @@ import UrlParser from '../../services/UrlParser.js'
 
 import Recipe from '../../models/Recipe.js'
 
+import ModalConfirm from '../components/ModalConfirm.js'
+
 let EditRecipe = {
   render : async () => {
     console.log("EditRecipe render");
@@ -114,8 +116,10 @@ function setupDirections(directions) {
   });
 }
 
-function discardRecipe(recipeId) {
-  if (window.confirm("Discard recipe edits?")) {
+async function discardRecipe(recipeId) {
+  const modal = new ModalConfirm('Discard recipe edits?', 'Discard Edits', "Keep Editing");
+  const response = await modal.confirm();
+  if (response) {
     window.location = `/#/view/${recipeId}`;
   }
 }

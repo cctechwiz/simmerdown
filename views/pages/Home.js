@@ -8,8 +8,6 @@ let Home = {
     console.log("Home render");
     let view = /*html*/`
       <section>
-        <button class="modal-btn-open">Modal</button>
-
         <div id=home-search-box>
           <label>Search <input type="text"/></label>
         </div>
@@ -29,14 +27,6 @@ let Home = {
   
   after_render : async () => {
     console.log("Home after_render");
-
-    const openModalBtn = document.querySelector(".modal-btn-open");
-    openModalBtn.addEventListener("click", async () => {
-      console.log("clicked modal button");
-      const modal = new ModalConfirm('Do the thing with a much longer question in the modal box?');
-      const response = await modal.confirm();
-      console.log(response);
-    });
 
     const searchBox = document.querySelector("#home-search-box input[type='text']");
     searchBox.addEventListener("keyup", debounce(filterRecipes, 250));
@@ -142,7 +132,7 @@ function addRecipeToCategory(recipe, category) {
   card.id = recipe._id;
   const link = HtmlBuilder.addChild(card, "a", recipe.title);
   link.href = `/#/view/${recipe._id}`;
-  console.log(`Adding ${recipe.title} to ${categorySection.id}`);
+  //console.log(`Adding ${recipe.title} to ${categorySection.id}`);
 }
 
 const debounce = (func, wait) => {
