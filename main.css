@@ -159,6 +159,12 @@ html.nontouch .card:hover {
   margin: 1px;
 }
 
+.category-checkboxes {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
 /* *************
  Button Footers
 ************** */

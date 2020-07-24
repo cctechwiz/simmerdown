@@ -17,7 +17,7 @@ let NewRecipes = {
         </h1>
 
         <h1>Categories:</h1>
-        <div id="new-categories"></div>
+        <div class="category-checkboxes"><div></div></div>
 
         <h1>Ingredients: 
           <button id=new-ingredients-btn class="add-button">
@@ -68,7 +68,7 @@ let NewRecipes = {
 function setupCategories() {
   let categoryOptions = Repository.getAllCategories();
   
-  let categories = document.getElementById("new-categories");
+  let categories = document.querySelector(".category-checkboxes div");
 
   categoryOptions.forEach(category => {
     let checkboxDiv = HtmlBuilder.addChild(categories, "div");
@@ -122,7 +122,7 @@ async function saveRecipe() {
 
   let newRecipe = new Recipe(titleElem.value);
 
-  let categoryElems = document.querySelectorAll("#new-categories input[type='checkbox']");
+  let categoryElems = document.querySelectorAll(".category-checkboxes input[type='checkbox']");
   categoryElems.forEach((checkbox) => {
     if (checkbox.checked) {
       newRecipe.addCategory(checkbox.name);
@@ -161,7 +161,7 @@ function resetPage() {
   title.value = "";
   title.focus();
   
-  let categoryElems = document.querySelectorAll("#new-categories input[type='checkbox']");
+  let categoryElems = document.querySelectorAll(".category-checkboxes input[type='checkbox']");
   categoryElems.forEach((checkbox) => {
     checkbox.checked = false;
   });
