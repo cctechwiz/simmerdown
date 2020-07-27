@@ -55,10 +55,7 @@ window.addEventListener('load', router);
 
 netlifyIdentity.on('close', () => {
   console.log("netlifyIdentity close event");
-  const user = netlifyIdentity.currentUser();
-  if (user) {
-    router();
-  }
+  router();
 });
 
 netlifyIdentity.on('login', () => {
@@ -68,7 +65,7 @@ netlifyIdentity.on('login', () => {
 
 netlifyIdentity.on('logout', () => {
   console.log("netlifyIdentity logout event");
-  const content = document.getElementById('page_container');
+  const content = document.getElementById('page-container');
   content.innerHTML = "";
   netlifyIdentity.close();
 });
